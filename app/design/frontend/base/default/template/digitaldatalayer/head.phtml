@@ -54,4 +54,5 @@
     <?php endif; ?>
 
 <?php } catch (Exception $e) {
+    Mage::logException($e);
 } ?>
