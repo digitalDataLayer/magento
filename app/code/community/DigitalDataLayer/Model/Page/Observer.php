@@ -993,11 +993,13 @@ class DigitalDataLayer_Model_Page_Observer
             } else {
                 $cart['price']['priceWithTax'] = $cart['price']['basePrice'];
             }
-            if ($quote->getGetData()['grand_total']) {
-                $cart['price']['cartTotal'] = (float)$quote->getGetData()['grand_total'];
-            } else {
-                $cart['price']['cartTotal'] = $cart['price']['priceWithTax'];
-            }
+            // Parse error: syntax error, unexpected '[' in /var/www/httpdocs/app/code/community/DigitalDataLayer/Model/Page/Observer.php on line 996
+            // (on Magento 1.7.0.2)
+            // if ($quote->getGetData()['grand_total']) {
+            //     $cart['price']['cartTotal'] = (float)$quote->getGetData()['grand_total'];
+            // } else {
+            //     $cart['price']['cartTotal'] = $cart['price']['priceWithTax'];
+            // }
             // $cart['attributes'] = array();
             if ($cart['price']['basePrice'] === 0.0 && $cart['price']['cartTotal'] === 0.0 && $cart['price']['priceWithTax'] === 0.0) {
                 unset($cart['price']);
